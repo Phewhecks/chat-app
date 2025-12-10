@@ -1,7 +1,9 @@
 import axios from 'axios';
 
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
 const api = axios.create({
-  baseURL: 'http://localhost:4000/api',
+  baseURL: `${backendUrl}/api`,  // Use env variable here
 });
 
 api.interceptors.request.use((config) => {
