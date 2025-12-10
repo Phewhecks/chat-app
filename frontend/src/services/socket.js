@@ -1,9 +1,12 @@
 import { io } from 'socket.io-client';
+
 let socket;
 
 export function connectSocket() {
   const token = localStorage.getItem('token');
-  socket = io('http://localhost:4000', { query: { token } });
+  const backendUrl = process.env.REACT_APP_BACKEND_URL; // dynamically use backend URL
+
+  socket = io(backendUrl, { query: { token } });
   return socket;
 }
 
